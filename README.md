@@ -7,7 +7,7 @@ Proyecto desarrollado para la materia de Negocios Electronicos en colaboración 
 - Nicolas Omar Diego Hernandez
 
 Profesor:
-Ing. Uziel Trujillo Colón
+Uziel Trujillo Colón
 
 Things you may want to cover:
 
