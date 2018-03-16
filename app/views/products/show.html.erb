@@ -1,0 +1,44 @@
+<div class="pull-right">
+  <%= link_to "Listado", products_path, class: 'btn btn-light' %>
+  <%= link_to "Nueva", new_product_path, class: 'btn btn-danger' %>
+  <%= link_to "Editar", edit_product_path, class: 'btn btn-secondary'  %>
+  <%= link_to "Eliminar", product_path, method: :delete, class: 'btn btn-dark'  %>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<% if !notice.blank? %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <b>Información !!</b> <%= notice %>
+  </div>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th width="20%">Sucursal</th>
+      <td><%= @product.company.nombre %></td>
+    </tr>
+    <tr>
+      <th>Nombre Producto</th>
+      <td><%= @product.nombre %></td>
+    </tr>
+    <tr>
+      <th>Descripcion</th>
+      <td><%= @product.descripcion %></td>
+    </tr>
+    <tr>
+      <th>Cantidad</th>
+      <td><%= @product.cantidad %></td>
+    </tr>
+    <tr>
+      <th>Precio de Compra</th>
+      <td><%= money_format( @product.precio_compra ) %></td>
+    </tr>
+    <tr>
+      <th>Precio de Venta</th>
+      <td><%= money_format( @product.precio_venta ) %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,48 @@
+<div class="card mb-3">
+  <%= image_tag "imageCap.svg", class: 'card-img-top' %>
+  <div class="card-body">
+    <p class="card-text text-center">
+      <small class="text-muted">Nombre Usuario<%# "#{current_user.nombre} #{current_user.apellidos}" %></small>
+    </p>
+  </div>
+</div>
+
+<%
+  
+  menuCompania = "collapsed"
+  subCompania = ""
+
+  menuCatalogos = "collapsed"
+  subCatalogos = ""
+
+  case params[:controller]
+    when "products"
+      menuCatalogos = ""
+      subCatalogos = "show"
+    when "bussines_names", "companies"
+      menuCompania = ""
+      subCompania = "show"
+  end
+%>
+<div class="list-group panel">
+  <a href="#menu1" class="list-group-item <%= menuCompania %> bg-dark text-white" data-toggle="collapse"><i class="fa fa-industry"></i> <span class="hidden-sm-down">Compañia</span> </a>
+  <div class="collapse <%= subCompania %>" id="menu1">
+      <%= link_to "Razon Social", bussines_names_path, class: (params[:controller] == 'bussines_names' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
+      
+      <%= link_to "Sucursales", companies_path, class: (params[:controller] == 'companies' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
+  </div>
+    
+  <a href="#menu2" class="list-group-item <%= menuCatalogos %> bg-dark text-white" data-toggle="collapse"><i class="fa fa-briefcase"></i> <span class="hidden-sm-down">Catalogos</span></a>
+  <div class="collapse <%= subCatalogos %>" id="menu2">
+      <a href="#" class="list-group-item">Usuario</a>
+      <%= link_to "Productos", products_path, class: (params[:controller] == 'products' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
+  </div>
+
+  <a href="#menu3" class="list-group-item collapsed bg-dark text-white" data-toggle="collapse"><i class="fa fa-line-chart"></i> <span class="hidden-sm-down">Reportes</span></a>
+  <div class="collapse" id="menu3">
+      <a href="#" class="list-group-item">Existencia Productos</a>
+      <a href="#" class="list-group-item">Ventas</a>
+  </div>
+
+  <%= link_to "Ventas", "", class: (params[:controller] == 'sales' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
+</div>

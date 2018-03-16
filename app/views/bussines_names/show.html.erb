@@ -1,0 +1,32 @@
+<div class="pull-right">
+  <%= link_to "Listado", bussines_names_path, class: 'btn btn-light' %>
+  <%= link_to "Nueva", new_bussines_name_path, class: 'btn btn-danger' %>
+  <%= link_to "Editar", edit_bussines_name_path, class: 'btn btn-secondary'  %>
+  <%= link_to "Eliminar", bussines_name_path, method: :delete, class: 'btn btn-dark'  %>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<% if !notice.blank? %>
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <b>Información !!</b> <%= notice %>
+  </div>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th width="20%">Razon Social</th>
+      <td><%= @bussines_name.nombre %></td>
+    </tr>
+    <tr>
+      <th width="20%">RFC</th>
+      <td><%= @bussines_name.rfc %></td>
+    </tr>
+    <tr>
+      <th width="20%">Dirección Fiscal</th>
+      <td><%= @bussines_name.direccion_fiscal %></td>
+    </tr>
+  </tbody>
+</table>

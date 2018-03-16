@@ -1,0 +1,46 @@
+<div class="pull-right">
+  <%= link_to "Nueva", new_bussines_name_path, class: 'btn btn-danger' %>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<% if @bussines_names.blank? %>
+  <div class="alert alert-info alert-dismissible mx-auto" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    No existen elementos en la base de datos, favor de crear algunos!!
+  </div>
+<% else %>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th width="30">ID</th>
+        <th width="75">Opciones</th>
+        <th>Razon Social</th>
+        <th>RFC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bussines_names.each do |item| %>
+        <tr>
+          <th><%= item.id %></th>
+          <td class="text-center">
+            <!-- Boton mostrar -->
+            <%= link_to bussines_name_path item do %>
+              <i class="fa fa-eye text-muted"></i>
+            <% end %>
+            <!-- Boton editar -->
+            <%= link_to edit_bussines_name_path item do %>
+              <i class="fa fa-pencil text-muted"></i>
+            <% end %>
+            <!-- Boton eliminar -->
+            <%= link_to bussines_name_path( item ), method: :delete, data: { confirm: '¿Estas seguro de eliminar este elemento?' } do %>
+              <i class="fa fa-trash-o text-muted"></i>
+            <% end %>
+          </td>
+          <td><%= item.nombre %></td>
+          <td><%= item.rfc %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

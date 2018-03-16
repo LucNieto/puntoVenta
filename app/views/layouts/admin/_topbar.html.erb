@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #1D142B;">
+  <%= link_to welcome_index_path, class: 'navbar-brand' do %>
+    <%= image_tag "logo24.png", class: 'd-inline-block align-center' %>
+    <span class="navbar-logotxt">Punto de Venta</span>
+  <% end %>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse pull-right" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><%# "#{current_user.nombre} #{current_user.apellidos}" %></a>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Cerrar Sesión', "", method: :delete, class: 'nav-link' %>
+        <%# link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+    </ul>
+  </div>
+
+</nav>

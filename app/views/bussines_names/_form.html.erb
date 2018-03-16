@@ -1,0 +1,38 @@
+<% if @bussines_name.errors.any? %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <b>Alerta !! </b><%= @bussines_name.errors.count > 1 ? "Se han encontrado #{@bussines_name.errors.count} errores:": "Se ha encontrado #{@bussines_name.errors.count} error:" %>
+
+      <% @bussines_name.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+<% end %>
+
+<%= form_for @bussines_name  do |f| %>
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">Razon Social</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.text_field :nombre, autofocus: true, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">RFC</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.text_field :rfc, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">Direccion</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.text_area :direccion_fiscal, rows: 5, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <%= f.submit nil, class: "btn btn-primary" %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>

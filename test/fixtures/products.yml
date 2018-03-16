@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  cantidad: 1
+  precio_compra: 1.5
+  precio_venta: 1.5
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  cantidad: 1
+  precio_compra: 1.5
+  precio_venta: 1.5

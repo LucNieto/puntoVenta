@@ -1,0 +1,38 @@
+<% if @company.errors.any? %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <b>Alerta !! </b><%= @company.errors.count > 1 ? "Se han encontrado #{@company.errors.count} errores:": "Se ha encontrado #{@company.errors.count} error:" %>
+
+      <% @company.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+  </div>
+<% end %>
+
+<%= form_for @company do |f| %>
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">Razon Social</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.select :bussines_name_id, BussinesName.all.map { |b| [b.nombre, b.id] },{ prompt: "- Seleccionar -", selected: @company.bussines_name_id }, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">Sucursal</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.text_field :nombre, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-form-label col-lg-3 col-sm-4">Direccion</label>
+    <div class="col-lg-9 col-sm-8">
+      <%= f.text_area :direccion, rows: 5, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <%= f.submit nil, class: "btn btn-primary" %>
+  </div>
+  <div class="clearfix"></div>
+<% end %>
