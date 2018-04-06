@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require froala_editor.min.js
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+    $('textarea#froala-editor-enabled').froalaEditor()
+});
