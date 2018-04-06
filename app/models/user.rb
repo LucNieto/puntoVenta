@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum user_type: [:root,:admin,:ventas]
+  enum user_type: [:No, :Root, :Administrador, :Ventas]
   def nombre_usuario
     "#{nombres} #{apellido_paterno} #{apellido_materno}"
   end
