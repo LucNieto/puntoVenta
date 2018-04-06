@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  enum user_type: [:root,:admin,:ventas]
+  def nombre_usuario
+    "#{nombres} #{apellido_paterno} #{apellido_materno}"
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
