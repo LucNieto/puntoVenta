@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #1D142B;">
-  <%= link_to welcome_index_path, class: 'navbar-brand' do %>
+  <%= link_to root_path, class: 'navbar-brand' do %>
     <%= image_tag "logo24.png", class: 'd-inline-block align-center' %>
     <span class="navbar-logotxt">Punto de Venta</span>
   <% end %>
@@ -14,10 +14,18 @@
         <a class="nav-link" href="#"><%# "#{current_user.nombre} #{current_user.apellidos}" %></a>
       </li>
       <li class="nav-item">
-        <%= link_to 'Cerrar Sesión', "", method: :delete, class: 'nav-link' %>
+      <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+      </p>
         <%# link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'nav-link' %>
       </li>
     </ul>
   </div>
-
 </nav>

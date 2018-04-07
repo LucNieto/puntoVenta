@@ -2,7 +2,9 @@
   <%= image_tag "imageCap.svg", class: 'card-img-top' %>
   <div class="card-body">
     <p class="card-text text-center">
-      <small class="text-muted">Nombre Usuario<%# "#{current_user.nombre} #{current_user.apellidos}" %></small>
+      <small class="text-muted">
+        <%= user_signed_in? ? current_user.nombre_usuario : "Nombre Usuario" %>
+      </small>
     </p>
   </div>
 </div>

@@ -5,7 +5,10 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+
+ 
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -25,10 +28,21 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  
+  #Show errors while sendit mails
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  # the email delivery method
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: ENV['GMAIL_DOMAIN'],
+    authentication: :plain,
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['programacion'],
+    enable_starttls_auto: true
+    }
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
