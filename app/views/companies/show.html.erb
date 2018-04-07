@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th width="20%">Dirección</th>
-      <td><%= @company.direccion %></td>
+      <td><%= label_tag(:foo, raw(@company.direccion))%></td>
     </tr>
   </tbody>
 </table>

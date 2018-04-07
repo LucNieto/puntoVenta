@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'figaro'
+gem "wysiwyg-rails"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
