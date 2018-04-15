@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  namespace :reports do
-    get 'products/index'
-  end
-
-  namespace :reports do
-    get 'products/new'
-  end
-
   devise_for :users
   resources :products
   resources :companies
