@@ -42,7 +42,7 @@
 
   <a href="#menu3" class="list-group-item collapsed bg-dark text-white" data-toggle="collapse"><i class="fa fa-line-chart"></i> <span class="hidden-sm-down">Reportes</span></a>
   <div class="collapse" id="menu3">
-      <a href="#" class="list-group-item">Existencia Productos</a>
+       <%= link_to "Existencia a productos",  new_reports_product_path, class: (params[:controller] == 'reports/products' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
       <a href="#" class="list-group-item">Ventas</a>
   </div>
 

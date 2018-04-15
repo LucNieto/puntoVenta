@@ -1,0 +1,10 @@
+<%= form_for( reports_products_path , url: {action: "create"}, html: { class: 'form-horizontal' }) do |f| %>
+
+  <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 10), { selected: Time.zone.now.year }, class: 'form-control' %>
+
+  <%= f.select :mes, options_for_select((1..12).map {|m| [t(Date::MONTHNAMES[m]), m]}, selected: Date.today.strftime("%m")),{ prompt: '- Seleccionar -' }, class: 'form-control' %>
+    </div>
+
+  <%= f.submit 'Filtrar', :class =>"btn btn-sm btn-info btn-flat btn-block" %>
+
+<% end %>
