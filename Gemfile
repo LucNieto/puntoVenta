@@ -27,7 +27,6 @@ gem 'devise'
 gem 'figaro'
 gem "wysiwyg-rails"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-gem 'wdm', '>= 0.1.0'
 gem 'bcrypt', platforms: :ruby
 
 group :development, :test do
