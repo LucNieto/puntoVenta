@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406032035) do
+ActiveRecord::Schema.define(version: 20180429144255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20180406032035) do
     t.index ["bussines_name_id"], name: "index_companies_on_bussines_name_id"
   end
 
+  create_table "details", force: :cascade do |t|
+    t.bigint "sale_id"
+    t.bigint "product_id"
+    t.integer "cantidad", default: 0
+    t.float "importe", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_details_on_product_id"
+    t.index ["sale_id"], name: "index_details_on_sale_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "company_id"
     t.string "nombre"
@@ -42,6 +53,18 @@ ActiveRecord::Schema.define(version: 20180406032035) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_products_on_company_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.float "neto", default: 0.0
+    t.float "neto_iva", default: 0.0
+    t.float "total_compra", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_sales_on_company_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,5 +90,9 @@ ActiveRecord::Schema.define(version: 20180406032035) do
   end
 
   add_foreign_key "companies", "bussines_names"
+  add_foreign_key "details", "products"
+  add_foreign_key "details", "sales"
   add_foreign_key "products", "companies"
+  add_foreign_key "sales", "companies"
+  add_foreign_key "sales", "users"
 end
