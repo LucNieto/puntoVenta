@@ -11,12 +11,12 @@ Uziel Trujillo Colón
 
 Configuration
 * Antes de crear la base de datos es necesario crear dentro de la carpeta config el archivo application.yml e ingresar los siguientes campos de conexion a la base de datos.
-DB_USERNAME: "tuUsuario"
-DB_PASSWORD: "tuContraseña"
+- DB_USERNAME: "tuUsuario"
+- DB_PASSWORD: "tuContraseña"
 
-GMAIL_DOMAIN: "gmail.com"
-GMAIL_USERNAME: "tuUsuario@gmail.com"
-GMAIL_PASSWORD: "tuContraseña"
+- GMAIL_DOMAIN: "gmail.com"
+- GMAIL_USERNAME: "tuUsuario@gmail.com"
+- GMAIL_PASSWORD: "tuContraseña"
 
 Database creation
 * Para crear la base de datos ejecutamos los siguientes comandos:
