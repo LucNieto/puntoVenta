@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+20.times do
+	Product.create([{
+		company_id: Faker::Number.digit,
+		nombre: Faker::Pokemon.name,
+		descripcion: Faker::Lorem.paragraph,
+		cantidad: Faker::Number.number(2),
+		precio_compra: Faker::Number.decimal(2, 2),
+		precio_venta: Faker::Number.decimal(2, 2)
+	}])
+end
+
+100.times do
+	Product.create([{
+		company_id: Faker::Number.number(2),
+		nombre: Faker::Lovecraft.deity,
+		descripcion:Faker::Lorem.paragraph,
+		cantidad: Faker::Number.number(2),
+		precio_compra: Faker::Number.decimal(2, 2),
+		precio_venta: Faker::Number.decimal(2, 2)
+	}])
+end

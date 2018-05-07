@@ -5,10 +5,14 @@ module Reports
         include ActiveModel::Conversion
         extend ActiveModel::Naming
 
-        attr_accessor :year,:mes
+        attr_accessor :year,:mes,:dia,:product_id,:sucursal_id
 
         validates :year, presence: true
         validates :mes, presence: true
+        validates :dia, presence: true
+        validates :product_id, presence: true
+        validates :sucursal_id, presence: true
+
 
         def initialize(attributes = {})
         attributes.each do |name, value|

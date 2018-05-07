@@ -1,2 +1,49 @@
-<h1>Reports::Products#index</h1>
-<p>Find me in app/views/reports/products/index.html.erb</p>
+<div class="pull-right">
+  <%= link_to "Nueva", new_product_path, class: 'btn btn-danger' %>
+</div>
+<div class="clearfix"></div>
+<br />
+
+<% if @product.blank? %>
+  <div class="alert alert-info alert-dismissible mx-auto" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    No existen elementos en la base de datos, favor de crear algunos!!
+     <%= link_to "Nuevo reporte", new_reports_product_path, class: 'btn btn-info' %>
+  </div>
+<% else %>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th width="30">ID</th>
+        <th width="75">Opciones</th>
+        <th>Sucursal</th>
+        <th>Nombre</th>
+        <th>Precio Venta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product.each do |item| %>
+        <tr>
+          <th><%= item.id %></th>
+          <td class="text-center">
+            <!-- Boton mostrar -->
+            <%= link_to product_path item do %>
+              <i class="fa fa-eye text-muted"></i>
+            <% end %>
+            <!-- Boton editar -->
+            <%= link_to edit_product_path item do %>
+              <i class="fa fa-pencil text-muted"></i>
+            <% end %>
+            <!-- Boton eliminar -->
+            <%= link_to product_path( item ), method: :delete, data: { confirm: '¿Estas seguro de eliminar este elemento?' } do %>
+              <i class="fa fa-trash-o text-muted"></i>
+            <% end %>
+          </td>
+          <td><%= item.company.nombre %></td>
+          <td><%= item.nombre %></td>
+          <td class="text-right"><%= money_format(item.precio_venta ) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
