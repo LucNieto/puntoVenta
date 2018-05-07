@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  company: one
+  neto: 1.5
+  neto_iva: 1.5
+  total_compra: 1.5
+
+two:
+  user: two
+  company: two
+  neto: 1.5
+  neto_iva: 1.5
+  total_compra: 1.5
