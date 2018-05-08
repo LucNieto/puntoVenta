@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Filtro de producto</a>
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Filtro por productos</a>
     </div>
   </div>
   <div class="col-8">
@@ -37,7 +37,7 @@
          <div class="form-group row">
            <label class="col-form-label col-lg-3 col-sm-4">Sucursal</label>
            <div class="col-lg-9 col-sm-8">
-            <%= f.select :sucursal_id,Company.all.map { |u| [u.nombre, u.id ]},{ prompt: 'No filtrar' } ,class: 'form-control'  %>
+            <%= f.select :sucursal_id,Company.order('nombre ASC').all.map { |u| [u.nombre, u.id ]},{ prompt: 'No filtrar' } ,class: 'form-control'  %>
            </div>
          </div>
       </div>

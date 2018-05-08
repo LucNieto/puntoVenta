@@ -46,17 +46,16 @@ User.create!([{
 	apellido_materno: 'Bautista'
 }])
 
-#Ingresar aqui usuario de Josue y descomentar
-#User.create!([{
-#	email: '',
-#	password: 'enviado',
-#	encrypted_password: '',
-#	user_type: 1,
-#	username: '',
-#	nombres: '',
-#	apellido_paterno: '',
-#	apellido_materno: ''
-#}])
+User.create!([{
+	email: 'josue.zapatamo@gmail.com',
+	password: 'enviado',
+	encrypted_password: '$2a$11$iNEa3IaYa0EQQ.25hOyG4OK4gtB56YiNkObVlBQyINNcgAJBGefnW',
+	user_type: 1,
+	username: 'RannFerii',
+	nombres: 'Josue',
+	apellido_paterno: 'Zapata',
+	apellido_materno: 'Moreno'
+}])
 
 puts "Usuarios creados #{User.count}"
 

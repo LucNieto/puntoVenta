@@ -1,0 +1,50 @@
+<%= form_for( reports_sales_path , url: {action: "create"}, html: { class: 'form-horizontal' }) do |f| %>
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Filtro por ventas</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+        <div class="form-group row">
+         <label class="col-form-label col-lg-3 col-sm-4">Año</label>
+          <div class="col-lg-9 col-sm-8">
+            <%= f.select :year, (Time.zone.now.year - 10)..(Time.zone.now.year + 10), { selected: Time.zone.now.year }, class: 'form-control' %>
+          </div>
+         </div>
+         <div class="form-group row">
+          <label class="col-form-label col-lg-3 col-sm-4">Mes</label>
+          <div class="col-lg-9 col-sm-8">
+            <%= f.select :mes, options_for_select((1..12).map {|m| [t(Date::MONTHNAMES[m]), m]}, selected: Date.today.strftime("%m")),{ prompt: 'No filtrar' }, class: 'form-control' %>
+          </div>
+         </div>
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-4">Dias</label>
+           <div class="col-lg-9 col-sm-8">
+            <%= f.select :dia,  options_for_select((1..31), selected: Date.today.strftime("%d")), {prompt: 'No filtrar'}, class: 'form-control' %>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-4">Sucursal</label>
+           <div class="col-lg-9 col-sm-8">
+            <%= f.select :sucursal_id,Company.order('nombre ASC').all.map { |u| [u.nombre, u.id ]},{ prompt: 'No filtrar' } ,class: 'form-control'  %>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-4">Usuario</label>
+           <div class="col-lg-9 col-sm-8">
+            <%= f.select :usuario_id,User.order('nombres ASC').all.map { |u| [u.nombres, u.id ]},{ prompt: 'No filtrar' } ,class: 'form-control'  %>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label class="col-form-label col-lg-3 col-sm-4"></label>
+           <div class="col-lg-9 col-sm-8">
+            <%= f.submit 'Filtrar', :class =>"btn btn-sm btn-info btn-flat btn-block" %>
+           </div>
+         </div>
+      </div>
+  </div>
+</div>
+<% end %>

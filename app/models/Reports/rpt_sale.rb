@@ -1,15 +1,16 @@
 module Reports
-    class RptProduct
+    class RptSale
         # Validations
         include ActiveModel::Validations
         include ActiveModel::Conversion
         extend ActiveModel::Naming
 
-        attr_accessor :year,:mes,:dia,:sucursal_id
+        attr_accessor :year,:mes,:dia,:usuario_id,:sucursal_id
 
         validates :year, presence: true
         validates :mes, presence: true
         validates :dia, presence: true
+        validates :usuario_id, presence: true
         validates :sucursal_id, presence: true
 
         def initialize(attributes = {})
