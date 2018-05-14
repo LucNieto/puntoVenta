@@ -11,37 +11,35 @@ class SalesController < ApplicationController
   def show
   end
 
-  def sale_charge
-    # binding.pry
-    customer = Conekta::Customer.create({
-      :name => 'Fulanito Pérez',
-      :email => 'utColon18@gmail.com',
-      :phone => '7441057042',
-      :payment_sources => [{
-        :type => 'card',
-        :token_id => 'tok_test_visa_4242'
-      }]
-    })
+  # def sale_charge
+  #   # binding.pry
+  #   customer = Conekta::Customer.create({
+  #     :name => 'Fulanito Pérez',
+  #     :email => 'utColon18@gmail.com',
+  #     :phone => '7441057042',
+  #     :payment_sources => [{
+  #       :type => 'card',
+  #       :token_id => 'tok_test_visa_4242'
+  #     }]
+  #   })
 
-
-    binding.pry
-    order = Conekta::Order.create({
-      :currency => "MXN",
-      :customer_info => {
-        :customer_id => customer.id
-      },
-      :line_items => [{
-        :name => "Box of Cohiba S1s",
-        :unit_price => 35000,
-        :quantity => 1
-      }],
-      :charges => [{
-        :payment_method => {
-          :type => "default"
-        }
-      }]
-    })
-  end
+  #   order = Conekta::Order.create({
+  #     :currency => "MXN",
+  #     :customer_info => {
+  #       :customer_id => customer.id
+  #     },
+  #     :line_items => [{
+  #       :name => "Box of Cohiba S1s",
+  #       :unit_price => 35000,
+  #       :quantity => 1
+  #     }],
+  #     :charges => [{
+  #       :payment_method => {
+  #         :type => "default"
+  #       }
+  #     }]
+  #   })
+  # end
 
   def edit
   end

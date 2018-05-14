@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :companies
   resources :bussines_names
   resources :sales do
-    collection do
-      get ':id/charge' => :sale_charge, as: 'charge' # /sales/charge
-    end
+    resources :charges, only: [:new, :show]
+    post 'charges/charge'
+    # collection do
+    #   get ':id/charge' => :sale_charge, as: 'charge' # /sales/charge
+    # end
   end
   namespace :reports do 
     resources :sales, only: [:index, :new, :create]

@@ -1,6 +1,5 @@
-
 <div class="pull-left">
-  <%= link_to "<i class='fa fa-credit-card'>&nbsp;</i>Realizar compra".html_safe, charge_sales_path(@sale), class: 'btn btn-lg btn-success' %>
+  <%= link_to "<i class='fa fa-credit-card'>&nbsp;</i>Realizar compra".html_safe, new_sale_charge_path(@sale), class: 'btn btn-lg btn-success' %>
 </div>
 
 <div class="pull-right">
@@ -63,28 +62,7 @@
   
   <!-- Detail Data -->
   <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-    <h5 class="text-center text-muted">Detalle de compra</h5>
-    <table class="table table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Importe</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @sale.details.each do |item| %>
-        <tr>
-          <td><%= item.product.nombre %></td>
-          <td class="text-center"><%= item.cantidad %></td>
-          <td class="text-right"><%= money_format( item.product.precio_venta ) %></td>
-          <td class="text-right"><%= money_format( item.importe ) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'table_detail', object: @sale %>
   </div>
 </div>
 
