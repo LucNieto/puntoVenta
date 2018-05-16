@@ -1,0 +1,35 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <th width="40%">Orden ID</th>
+      <td><%= @order.id %></td>
+    </tr>
+    <tr>
+      <th>Estatus</th>
+      <td><%= @order.charges[0].status %></td>
+    </tr>
+    <tr>
+      <th>Cantidad pagada</th>
+      <td><%= "$#{@order.amount.to_f/100} #{@order.currency}" %></td>
+    </tr>
+    <tr>
+      <th>Codigo pago</th>
+      <td><%= "#{@order.charges[0].payment_method.auth_code}" %></td>
+    </tr>
+    <tr>
+      <th colspan="2" class="text-center">Información de tarjeta</th>
+    </tr>
+    <tr>
+      <th>Tarjetahabiente</th>
+      <td><%= "#{@order.charges[0].payment_method.name}" %></td>
+    </tr>
+    <tr>
+      <th>Ultimos 4 digitos</th>
+      <td><%= "#{@order.charges[0].payment_method.last4}" %></td>
+    </tr>
+    <tr>
+      <th>Tipo de tarjeta</th>
+      <td><%= "#{@order.charges[0].payment_method.brand}" %></td>
+    </tr>
+  </tbody>
+</table>
