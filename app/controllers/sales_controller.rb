@@ -9,6 +9,28 @@ class SalesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        #pdf = Prawn::Document.new
+        #pdf.text ""
+        pdf = InvoicePdf.new(@sale, view_context)
+        send_data pdf.render,
+         filename: 
+        "Invoice_#{@sale.created_at.strftime("%d/%m/%Y")}_#{@sale.id}.pdf",
+        type: "application/pdf", disposition: 'inline', info: 'info'
+        info = {
+          :Title => "Ticket",
+          :Author => "#{current_user.email}",
+          :Subject => "Detalle de la venta",
+          :Keywords => "ticket venta",
+          :Creator => "#{@sale.company.nombre}",
+          :Producer => "Prawn",
+          :CreationDate => Time.now
+        }
+
+      end
+    end
   end
 
   # def sale_charge
