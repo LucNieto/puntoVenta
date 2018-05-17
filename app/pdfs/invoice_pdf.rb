@@ -45,14 +45,25 @@ class InvoicePdf < Prawn::Document
         end
     end
 
+    #producto, cantidad, precio, importe
+  # def subscription_item_rows
+  #  # total_compra = 0 
+  #     [["Producto", "Cantidad", "Precio", "Importe"]]+
+  #     @invoice.details.each do |item|
+  #         [item.product.nombre,
+  #         item.cantidad ,
+  #         item.product.precio_venta,
+  #         item.importe ]
+  #         #total_compra += item.importe
+  #     end
+    
+  # end
+
     def subscription_item_rows
         ([["Descripción","Monto"], #+
          [ "Subtotal ",  "#{@invoice.neto} "],
          [ "IVA ",  "#{@invoice.neto_iva} "],
          [ "Total ",  "#{@invoice.total_compra} "]])
-        #@invoice.company.map do |details|
-             # [ "#{details.product.nombre} ",  "#{details.cantidad} ", "#{details.product.precio_venta}  ",   "#{(details.product.precio_venta  * details.cantidad)}" ]
-        #end
     end
 
 end
