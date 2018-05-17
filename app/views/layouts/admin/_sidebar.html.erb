@@ -46,5 +46,5 @@
       <a href="#" class="list-group-item">Ventas</a>
   </div>
 
-  <%= link_to "Ventas", "", class: (params[:controller] == 'sales' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
+  <%= link_to "Ventas", sales_path, class: (params[:controller] == 'sales' ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action') %>
 </div>

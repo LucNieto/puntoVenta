@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sales</h1>
+<%= link_to 'New Sale', new_sale_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Ompany</th>
+      <th>Neto</th>
+      <th>Neto iva</th>
+      <th>Total compra</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.user_id %></td>
+        <td><%= sale.company_id %></td>
+        <td><%= sale.neto %></td>
+        <td><%= sale.neto_iva %></td>
+        <td><%= sale.total_compra %></td>
+        <td><%= link_to 'Show', sale %></td>
+        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
