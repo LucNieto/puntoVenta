@@ -18,4 +18,9 @@ Rails.application.routes.draw do
     resources :sales, only: [:index, :new, :create]
     resources :products, only: [:index, :new, :create]
   end
+  resources: "reports" do
+    collection do
+      get "reporting"
+    end
+
 end

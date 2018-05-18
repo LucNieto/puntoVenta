@@ -11,14 +11,32 @@ module Reports
 
       if    !sucursal_id.empty? &  !usuario_id.empty?
             @sale = Sale.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id),company_id:sucursal_id,user_id:usuario_id)  
-      elsif sucursal_id.empty? &  !usuario_id.empty?
-
+              respond_to do |format|
+                format.html
+                format.csv {send_data @product.to_csv }    
+                format.xls #{send_data @products.to_xls(col_sep:"\t") }   
+              end
+          elsif sucursal_id.empty? &  !usuario_id.empty?
             @sale = Sale.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id),user_id:usuario_id)  
-      elsif !sucursal_id.empty? &  usuario_id.empty?
-
+              respond_to do |format|
+                format.html
+                format.csv {send_data @product.to_csv }    
+                format.xls #{send_data @products.to_xls(col_sep:"\t") }   
+              end
+          elsif !sucursal_id.empty? &  usuario_id.empty?
             @sale = Sale.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id),company_id:sucursal_id) 
-      else
+              respond_to do |format|
+                format.html
+                format.csv {send_data @product.to_csv }    
+                format.xls #{send_data @products.to_xls(col_sep:"\t") }   
+              end
+          else
             @sale = Sale.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id))
+            respond_to do |format|
+              format.html
+              format.csv {send_data @product.to_csv }    
+              format.xls #{send_data @products.to_xls(col_sep:"\t") }   
+            end
       end
    
     end

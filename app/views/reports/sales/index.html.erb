@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <% #link_to "Nueva", new_sale_path, class: 'btn btn-danger' %>
+  <% link_to "Nueva", new_sales_path, class: 'btn btn-danger' %>
 </div>
 <div class="clearfix"></div>
 <br />
@@ -8,6 +8,7 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     No existen elementos en la base de datos, favor de crear algunos!!
      <%= link_to "Nuevo reporte", new_reports_sale_path, class: 'btn btn-info' %>
+     <%= link_to 'Excel', products_path(format: :xls),class: 'btn btn-success' %> 
   </div>
 <% else %>
   <table class="table">
