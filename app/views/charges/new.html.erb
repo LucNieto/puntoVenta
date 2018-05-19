@@ -1,0 +1,49 @@
+
+<div class="row">
+
+  <!-- Datos bancarios -->
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+
+    <%= form_tag( sale_charges_charge_path(@sale) , id: 'card-form') do |f| %>
+      <span class="card-errors"></span>
+
+      <div class="form-group">
+        <label>Nombre del Tarjetahabiente</label>
+        <input type="text" name="card_name" data-conekta="card[name]" class="form-control" placeholder="ej. Juan Penas">
+      </div>
+
+      <div class="form-group">
+        <label>Número de tarjeta de crédito</label>
+        <input type="text" maxlength="16" data-conekta="card[number]" class="form-control" placeholder="ej. 1234567812345678">
+      </div>
+
+      <div class="form-group">
+        <label>Codigo de Seguridad CVC(3 digitos al reverso)</label>
+        <input type="text" maxlength="3" data-conekta="card[cvc]" class="form-control" placeholder="ej. 321">
+      </div>
+
+      <div class="form-row">
+        <div class="col-7">
+          <input type="text" readonly class="form-control-plaintext" value="Fecha de expiración (MM/AAAA)">
+        </div>
+        <div class="col">
+          <input type="text" maxlength="2" data-conekta="card[exp_month]" class="form-control" placeholder="MM">
+        </div>
+        <div class="col">
+          <input type="text" maxlength="4" data-conekta="card[exp_year]" class="form-control" placeholder="AAAA">
+        </div>
+      </div>
+      
+      <br />
+      <div class="pull-right">
+        <input type="submit" value="Realizar cargo" class="btn btn-primary">
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+    <%= render 'sales/table_detail', object: @sale %>
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="pull-right">
+  <% #link_to "Nueva", new_sale_path, class: 'btn btn-danger' %>
+</div>
+<div class="clearfix"></div>
+<br />
+<% if @sale.blank? %>
+  <div class="alert alert-info alert-dismissible mx-auto" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    No existen elementos en la base de datos, favor de crear algunos!!
+     <%= link_to "Nuevo reporte", new_reports_sale_path, class: 'btn btn-info' %>
+  </div>
+<% else %>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th width="30">ID</th>
+        <th width="75">Opciones</th>
+        <th>Sucursal</th>
+        <th>Usuario</th>
+        <th>Neto</th>
+        <th>IVA</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sale.each do |item| %>
+        <tr>
+          <th><%= item.id %></th>
+          <td class="text-center">
+            <!-- Boton mostrar -->
+            <%= link_to product_path item do %>
+              <i class="fa fa-eye text-muted"></i>
+            <% end %>
+            <!-- Boton editar -->
+            <%= link_to edit_product_path item do %>
+              <i class="fa fa-pencil text-muted"></i>
+            <% end %>
+            <!-- Boton eliminar -->
+            <%= link_to product_path( item ), method: :delete, data: { confirm: '¿Estas seguro de eliminar este elemento?' } do %>
+              <i class="fa fa-trash-o text-muted"></i>
+            <% end %>
+          </td>
+          <td><%= item.company.nombre %></td>
+          <td><%= item.user.nombres %></td>
+          <td class="text-center"><%= money_format(item.neto ) %></td>
+          <td class="text-center"><%= money_format(item.neto_iva ) %></td>
+          <td class="text-center"><%= money_format(item.total_compra ) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
