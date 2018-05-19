@@ -1,0 +1,16 @@
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Sucursal</th>
+    <th>Nombre</th>
+    <th>Precio de Venta</th>    
+  </tr>
+  <% @product.each do |product|%>
+    <tr>
+      <td> <%= product.id %> </td>
+      <td> <%= product.company.nombre %> </td>
+      <td> <%= product.nombre %> </td>
+      <td> <%= money_format(product.precio_venta ) %></td>
+    </tr>
+  <% end%>
+</table>

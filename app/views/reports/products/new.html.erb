@@ -23,7 +23,7 @@
          <div class="form-group row">
            <label class="col-form-label col-lg-3 col-sm-4">Dias</label>
            <div class="col-lg-9 col-sm-8">
-            <%= f.select :dia,  options_for_select((1..31), selected: Date.today.strftime("%d")), {prompt: 'No filtrar'}, class: 'form-control' %>
+            <%= f.select :dia,  options_for_select((1..31)), {prompt: 'No filtrar'}, class: 'form-control' %>
            </div>
          </div>
          <!-- para productos

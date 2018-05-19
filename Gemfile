@@ -28,9 +28,7 @@ gem 'figaro'
 gem "wysiwyg-rails"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'bcrypt', platforms: :ruby
-gem 'rubyzip', '>= 1.2.1'
-gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
-gem 'axlsx_rails'
+gem 'conekta'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
