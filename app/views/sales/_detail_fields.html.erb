@@ -3,7 +3,9 @@
 
     <div class="row">
         <div class="col-xs-6 col-sm-2">
-            <%= f.input :cantidad, label: false %>
+            <%= f.input :cantidad,  :input_html => {
+                :class => "clase de prueba"
+                },label: false %>
         </div>
 
         <div class="col-xs-6 col-sm-3">
@@ -11,7 +13,7 @@
         </div>
 
         <div class="col-xs-6 col-sm-3">
-            <%= f.input :importe, label: false  %>
+            <%= f.input :importe, class:"test2", label: false  %>
         </div>
 
         <div class="col-xs-6 col-sm-">
