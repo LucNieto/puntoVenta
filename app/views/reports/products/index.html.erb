@@ -1,5 +1,7 @@
 <div class="pull-right">
-  <%= link_to "Nueva", new_product_path, class: 'btn btn-danger' %>
+  <%= link_to "Nuevo producto", new_product_path, class: 'btn btn-danger' %>
+  <%= link_to "Nuevo reporte", new_reports_product_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Excel', reports_products_reporting_path(format: :xls),class: 'btn btn-success' %> 
 </div>
 <div class="clearfix"></div>
 <br />
