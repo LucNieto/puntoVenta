@@ -41,6 +41,7 @@ module Reports::ProductsHelper
                 return beginning_of_day=Date.new(year,month,day).end_of_day
         end
     end
+
 end
 
 

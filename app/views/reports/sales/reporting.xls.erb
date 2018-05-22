@@ -1,0 +1,20 @@
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Sucursal</th>
+    <th>Usuario</th>
+    <th>Neto</th>    
+    <th>IVA</th>
+    <th>Total</th>   
+  </tr>
+  <% @sale.each do |sale|%>
+    <tr>
+      <td> <%= sale.id %> </td>
+      <td> <%= sale.company.nombre %> </td>
+      <td> <%= sale.user.nombres %> </td>
+      <td> <%= money_format(sale.neto )  %></td>
+      <td> <%= money_format(sale.neto_iva )  %></td>
+      <td> <%= money_format(sale.total_compra ) %></td>
+    </tr>
+  <% end%>
+</table>

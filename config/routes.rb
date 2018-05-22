@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
   namespace :reports do 
     resources :sales, only: [:index, :new, :create]
+    get 'sales/reporting'
     resources :products, only: [:index, :new, :create]
+    get 'products/reporting'
   end
   resources :welcome, only: [:index]
   root to: "welcome#index"

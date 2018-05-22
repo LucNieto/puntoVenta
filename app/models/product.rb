@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   belongs_to :company
 
   has_many :details, dependent: :destroy
+
 end

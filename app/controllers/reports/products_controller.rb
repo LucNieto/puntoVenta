@@ -1,20 +1,32 @@
 module Reports
   class ProductsController < ApplicationController
     before_action :authenticate_user!
+    
     include ProductsHelper
-   
+    $foo = @product
+    
     def index
-      
     year = params[:y]
     month = params[:m]
     day = params[:d]
     sucursal_id = params[:s]
-
       if sucursal_id.empty?
         @product = Product.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id))  
+        $foo=@product
       else
         @product = Product.where(created_at: helper_filter_beginning(year,month,day,sucursal_id)...helper_filter_ending(year,month,day,sucursal_id),company_id:sucursal_id)
+        $foo=@product
       end
+
+    end
+
+    def reporting
+     @product=   $foo
+      respond_to do |format|
+        format.html
+        format.csv {send_data  @product.to_csv }    
+        format.xls #{send_data @products.to_xls(col_sep:"\t") }   
+    end
 
     end
 
