@@ -28,8 +28,6 @@ gem 'figaro'
 gem "wysiwyg-rails"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'bcrypt', platforms: :ruby
-gem 'simple_form'
-gem 'cocoon'
 gem 'conekta'
 
 group :development, :test do
