@@ -4,13 +4,13 @@ class InvoicePdf < Prawn::Document
     @invoice = invoice
     @view = view
     logo
-    #text "" #text es para texto linealsin manipulación, draw_text permite manejar parametros
+    #text "" #text es para texto lineal sin manipulación, draw_text permite manejar parametros
     draw_text "Cliente: #{@invoice.user.nombres} #{@invoice.user.apellido_paterno } #{@invoice.user.apellido_materno}" , :at => [40, 500], size: 12
     sale_details
-    move_down 100
+    sale_total
+    move_down 50
     thanks_message
   end
-#end
 
 
   def logo
@@ -36,34 +36,44 @@ class InvoicePdf < Prawn::Document
 
   def sale_details
     move_down 40
-    table subscription_item_rows, :width => 300, :position => 40 do
+    table subtotal_item_rows, :width => 400, :position => 40 do
           row(0).font_style = :bold 
-          columns(1).align = :right
-          columns(2).align = :right
+          columns(1..3).align = :right
           self.header = true
-          self.column_widths = {0 => 200, 1 => 100}
+          self.column_widths = {0 => 200}
         end
     end
 
-    #producto, cantidad, precio, importe
-  # def subscription_item_rows
-  #  # total_compra = 0 
-  #     [["Producto", "Cantidad", "Precio", "Importe"]]+
-  #     @invoice.details.each do |item|
-  #         [item.product.nombre,
-  #         item.cantidad ,
-  #         item.product.precio_venta,
-  #         item.importe ]
-  #         #total_compra += item.importe
-  #     end
-    
-  # end
+    def sale_total
+    move_down 5
+    table total_rows, :width => 400, :position => 40 do
+          row(0).font_style = :bold 
+          columns(1..2).align = :right
+          self.header = true
+          self.column_widths = {0 => 200,1 => 200}
+      end
+    end
 
-    def subscription_item_rows
+    #producto, cantidad, precio, importe
+   def subtotal_item_rows
+      [["Producto", "Cantidad", "Precio", "Importe"]]+
+      @invoice.details.map do |item|    
+          [item.product.nombre,
+          item.cantidad ,
+          price(item.product.precio_venta),
+          price(item.importe) ]
+      end
+   end
+
+    def total_rows
         ([["Descripción","Monto"], #+
-         [ "Subtotal ",  "#{@invoice.neto} "],
-         [ "IVA ",  "#{@invoice.neto_iva} "],
-         [ "Total ",  "#{@invoice.total_compra} "]])
+         [ "Subtotal ",  price("#{@invoice.neto} ")],
+         [ "IVA ",  price("#{@invoice.neto_iva}")],
+         [ "Total ", price( "#{@invoice.total_compra} ")]])
+    end
+
+    def price(num)
+       @view.number_to_currency(num)
     end
 
 end
