@@ -4,9 +4,13 @@
 
 <div class="pull-right">
   <%= link_to "Listado", sales_path, class: 'btn btn-light' %>
+  <%= link_to sale_path(@sale, format: 'pdf'), target: '_blank', class: 'btn btn-success'  do %>
+    <i class="fa fa-file-pdf-o 3x" aria-hidden="true">&nbsp;</i>Ticket de compra
+  <% end %>
   <%= link_to "Nueva", new_sale_path, class: 'btn btn-danger' %>
   <%= link_to "Editar", edit_sale_path, class: 'btn btn-secondary'  %>
   <%= link_to "Eliminar", sale_path, method: :delete, class: 'btn btn-dark'  %>
+
 </div>
 <div class="clearfix"></div>
 <br />
@@ -57,10 +61,7 @@
         
       </tbody>
     </table>
-<div class="pull-left">
-  Descargar&nbsp;
-  <%= link_to "[ pdf ]", sale_path(@sale, format: 'pdf') %>
-</div>
+
   </div>
   
   <!-- Detail Data -->
