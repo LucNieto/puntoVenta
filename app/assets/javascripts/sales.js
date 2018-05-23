@@ -1,5 +1,20 @@
  $(document).ready(function() {
- 
+console.log('ejel');
+  $('#details')
+  .on('cocoon:before-insert', function(e,task_to_be_added) {
+    task_to_be_added.fadeIn('slow');
+  })
+  .on('cocoon:after-insert', function(e, added_task) {
+    // e.g. set the background of inserted task
+    added_task.css("background","red");
+  })
+  .on('cocoon:before-remove', function(e, task) {
+    // allow some time for the animation to complete
+    $(this).data('remove-timeout', 1000);
+    task.fadeOut('slow');
+  });
+  
+
   $(document).on('change keyup', '.input_cantidad, .input_importe', function(){
     method.recalculate();
   });
@@ -21,19 +36,17 @@
           if( $this.hasClass('input_cantidad') ){
             cantidad = parseFloat( $this.val() );
           }else if( $this.hasClass('input_importe') ){
-            //importe = parseFloat( precio );
-          }else if( $this.hasClass('col-form-label') ){
-            saldo = (cantidad * precio ).toFixed(2);
-            $this.html( saldo );
+            importe = precio;
+            saldo = (cantidad * importe ).toFixed(2);
+            $this.val(saldo);
             neto += parseFloat(saldo);
-          }
-          else if( $this.hasClass('select_product') ){
+          }else if( $this.hasClass('col-form-label') ){
+            $this.html( precio );
+          }else if( $this.hasClass('select_product') ){
              precio =  parseFloat($this.find(':selected').attr('data-precio'));
-            console.log(precio);
           }
         }); 
       });
-
       $("#sale_neto").val( neto.toFixed(2) );
       $("#sale_neto_iva").val( (neto * 0.16).toFixed(2) );
       $("#sale_total_compra").val( (neto * 1.16).toFixed(2) );

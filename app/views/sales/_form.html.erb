@@ -18,7 +18,7 @@
   </div>
   </div>
 
-  <table class='table'>
+
   <div class="page-header">
    <h4> Detalle de la venta  </h4>
   </div>
@@ -36,22 +36,24 @@
          <h5>Precio</h5>
        </div>
    
-       <div class="col-xs-6 col-sm-2"></div>
+       <div class="col-xs-6 col-sm-1"></div>
    
-       <div class="col-xs-6 col-sm-2">
+       <div class="col-xs-6 col-sm-3">
          <h5>Importe</h5>
        </div>
-  
-  </div>
-  <tbody >
+   </div> 
+ <div class="details">
+
     <%= f.simple_fields_for :details do |builder| %>
       <%= render 'detail_fields', f: builder %>
-    <% end %>
-  </tbody>
-</table>
-<div class="form-actions">
+    <% end %>  
+
+
+  <div class="form-actions">
   <%= link_to_add_association '<i class="fa fa-plus" aria-hidden="true"></i> Agregar Detalle'.html_safe, f, :details %>
+    </div>  
 </div>
+
 
   
 <div class="form-group row">
