@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="pull-right">
+<%= link_to "Nueva", new_sale_path, class: 'btn btn-danger' %>
+</div>
+<div class="clearfix"></div>
+<br />
+<% if @sales.blank? %>
+<div class="alert alert-info alert-dismissible mx-auto" role="alert">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+  No existen elementos en la base de datos, favor de crear algunos!!
+</div>
+<% else %>
 
-<h1>Sales</h1>
-<%= link_to 'New Sale', new_sale_path %>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>User</th>
-      <th>Ompany</th>
+      <th>Vendedor</th>
+      <th width="75">Opciones</th>
+      <th>Compañia</th>
       <th>Neto</th>
-      <th>Neto iva</th>
+      <th>Neto IVA</th>
       <th>Total compra</th>
       <th colspan="3"></th>
     </tr>
@@ -18,18 +26,27 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.user_id %></td>
-        <td><%= sale.company_id %></td>
+        <td><%= sale.user.nombres %></td>
+        <td class="text-center">
+        <!-- Boton mostrar -->
+        <%= link_to sale_path sale do %>
+          <i class="fa fa-eye text-muted"></i>
+        <% end %>
+        <!-- Boton editar -->
+        <%= link_to edit_sale_path sale do %>
+          <i class="fa fa-pencil text-muted"></i>
+        <% end %>
+        <!-- Boton eliminar -->
+        <%= link_to sale_path( sale ), method: :delete, data: { confirm: '¿Estas seguro de eliminar este elemento?' } do %>
+          <i class="fa fa-trash-o text-muted"></i>
+        <% end %>
+      </td>
+        <td><%= sale.company.nombre %></td>
         <td><%= sale.neto %></td>
         <td><%= sale.neto_iva %></td>
         <td><%= sale.total_compra %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
+<% end %>

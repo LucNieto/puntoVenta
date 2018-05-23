@@ -1,7 +1,8 @@
  $(document).ready(function() {
 
-
-
+  $(document).on("cocoon:after-remove", function() {
+    method.recalculate();
+  });
   $(document).on('change keyup', '.input_cantidad, .input_importe', function(){
     method.recalculate();
   });
@@ -13,24 +14,26 @@
     recalculate: function(){
       neto = 0;
       var $row = $(".nested-fields").children();
-      // obtenemos todas las filas(cada que se presiona Agregar detalle se agrega un row con N elementos)
-      var cantidad = 0, importe = 0, saldo = 0,precio=0;
+      
+      var cantidad = 0, saldo = 0,precio=0.00;
       $.each($row.children(), function(index, group){
         $elements = $( group ).children().children();
-      // Obtenemos información de cada elemento
         $.each( $elements, function(index, element){
           $this = $( element );
           if( $this.hasClass('input_cantidad') ){
             cantidad = parseFloat( $this.val() );
           }else if( $this.hasClass('input_importe') ){
-            importe = precio;
-            saldo = (cantidad * importe ).toFixed(2);
+            saldo = (cantidad * precio ).toFixed(2);
             $this.val(saldo);
             neto += parseFloat(saldo);
           }else if( $this.hasClass('col-form-label') ){
             $this.html( precio );
           }else if( $this.hasClass('select_product') ){
              precio =  parseFloat($this.find(':selected').attr('data-precio'));
+          }
+          if($this.hasClass('delete')){
+            console.log("click")
+            saldo-importe;
           }
         }); 
       });

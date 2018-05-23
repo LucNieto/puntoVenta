@@ -2,28 +2,30 @@
 <div class="nested-fields">
 
     <div class="row">
-        <div class="col-xs-6 col-sm-2">
-        <%= f.input :cantidad, input_html: { :class => "input_cantidad" },label: false %>
-        </div>
-
+    
         <div class="col-xs-6 col-sm-3">
         <div class="form-group">
             <%= f.select :product_id, Product.all.collect { |p| [p.nombre, p.id, {'data-precio':p.precio_venta}]},{ prompt: '- Seleccionar -'},{class:"select_product form-control"}%>
         </div>
         </div>
+
+        <div class="col-xs-6 col-sm-2">
+        <%= f.input :cantidad, input_html: { :class => "input_cantidad" },label: false %>
+        </div>
         
-        <div class="col-xs-6 col-sm-2 ">
+        <div class="col-xs-6 col-sm-2 text-left">
         <div class="form-group">
             <label class="col-form-label">0.00</label>
         </div>
         </div>
 
-        <div class="col-xs-6 col-sm-">
-            <%= link_to_remove_association "Eliminar", f, class: 'btn btn-primary btn-xs delete' %>
-        </div>
 
         <div class="col-xs-6 col-sm-3">
         <%= f.input :importe, input_html: { :class => "input_importe" }, label: false  %>
+        </div>
+
+        <div class="col-xs-6 col-sm-">
+        <%= link_to_remove_association "Eliminar", f, class: 'btn btn-primary btn-xs delete_neto' %>
         </div>
         
     </div>
