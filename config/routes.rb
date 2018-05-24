@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :products
-  resources :companies
-  resources :bussines_names
+
+  resources :products do
+    collection do
+      post :import
+    end
+  end
+
+  resources :companies do
+    collection do
+      post :import
+    end
+  end
+
+  resources :bussines_names do
+    collection do
+      post :import
+    end
+  end
+  
   resources :sales do
     resources :charges, only: [:new, :show]
     post 'charges/charge'

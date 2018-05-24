@@ -1,6 +1,14 @@
+<div class="pull-left">
+  <%= form_tag import_bussines_names_path, multipart: true do %>
+    <%= file_field_tag :file, class: 'btn btn-default' %>
+    <%= submit_tag "Importar", class: 'btn btn-info'%>
+  <% end %> 
+</div>
+
 <div class="pull-right">
   <%= link_to "Nueva", new_bussines_name_path, class: 'btn btn-danger' %>
 </div>
+
 <div class="clearfix"></div>
 <br />
 
