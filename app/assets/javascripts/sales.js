@@ -3,6 +3,7 @@
   $(document).on("cocoon:after-remove", function() {
     method.recalculate();
   });
+  
   $(document).on('change keyup', '.input_cantidad, .input_importe', function(){
     method.recalculate();
   });
@@ -32,7 +33,6 @@
              precio =  parseFloat($this.find(':selected').attr('data-precio'));
           }
           if($this.hasClass('delete')){
-            console.log("click")
             saldo-importe;
           }
         }); 
