@@ -1,22 +1,19 @@
 <div class="pull-left">
-  <%= link_to "<i class='fa fa-credit-card'>&nbsp;</i>Realizar compra".html_safe, new_sale_charge_path(@sale), class: 'btn btn-lg btn-success' %>
+  <%= link_to "<i class='fa fa-credit-card'>&nbsp;</i>Realizar compra".html_safe, new_sale_charge_path(@sale), class: 'btn btn-success' %>
+  <%= link_to sale_path(@sale, format: 'pdf'), target: '_blank', class: 'btn btn-info btn-sm'  do %>
+    <i class="fa fa-file-pdf-o 3x"></i>
+  <% end %>
 </div>
 
 <div class="pull-right">
-  <%= link_to "Listado", sales_path, class: 'btn btn-light' %>
-  <%= link_to "Nueva", new_sale_path, class: 'btn btn-danger' %>
-  <%= link_to "Editar", edit_sale_path, class: 'btn btn-secondary'  %>
-  <%= link_to "Eliminar", sale_path, method: :delete, class: 'btn btn-dark'  %>
+  <%= link_to "Listado", sales_path, class: 'btn btn-light btn-sm' %>
+  <%= link_to "Nueva", new_sale_path, class: 'btn btn-danger btn-sm' %>
+  <%= link_to "Editar", edit_sale_path, class: 'btn btn-secondary btn-sm'  %>
+  <%= link_to "Eliminar", sale_path, method: :delete, class: 'btn btn-dark btn-sm'  %>
 </div>
+
 <div class="clearfix"></div>
 <br />
-
-<% if !notice.blank? %>
-  <div class="alert alert-dismissible alert-success">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <b>Información !!</b> <%= notice %>
-  </div>
-<% end %>
 
 <div class="row">
 
@@ -62,7 +59,9 @@
   
   <!-- Detail Data -->
   <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-    <%= render 'table_detail', object: @sale %>
+    <div class="table-responsive">
+      <%= render 'table_detail', object: @sale %>
+    </div>
   </div>
 </div>
 
