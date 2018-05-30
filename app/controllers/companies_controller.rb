@@ -8,6 +8,11 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
+  def import
+    Company.import(params[:file])
+    redirect_to companies_path, notice: "Imported Company successfully."
+  end
+
   # GET /companies/1
   # GET /companies/1.json
   def show

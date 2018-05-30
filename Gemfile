@@ -30,6 +30,7 @@ gem "wysiwyg-rails"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'bcrypt', platforms: :ruby
 gem 'conekta'
+gem "roo", "~> 2.7.0"
 gem 'simple_form'
 gem 'cocoon'
 

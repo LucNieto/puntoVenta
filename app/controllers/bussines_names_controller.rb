@@ -6,6 +6,16 @@ class BussinesNamesController < ApplicationController
   # GET /bussines_names.json
   def index
     @bussines_names = BussinesName.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @bussines_names.to_csv }
+      format.xls 
+    end
+  end
+
+  def import
+    BussinesName.import(params[:file])
+    redirect_to bussines_names_path, notice: "Imported BussinesName successfully."
   end
 
   # GET /bussines_names/1
